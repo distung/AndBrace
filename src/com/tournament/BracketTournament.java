@@ -19,15 +19,19 @@ public class BracketTournament {
 	protected void InitializeBrackets(LinkedList<Player> players) {		
 		numberOfLevels = (int) (Math.log(players.size()) / Math.log(2));
 		int numberOfMatches = 2 ^ numberOfLevels;
-		for (int i = 1; i < players.size(); i = i+2) {
+		int positonToInsertPlayers = (2 ^ numberOfLevels - 1);
+		int positionToStop = positonToInsertPlayers + players.size();
+		
+		//insert players at the bottom of the bracket
+		for (int i = positonToInsertPlayers; i < positionToStop; i = i+2) {
 			Match match = new Match();
 			match.Player1 = players.get(i);
 			match.Player2 = players.get(i + 1);
 			bracket.put(i, match);		
 		}
 		
-		int restOfMatches = players.size() + 1;
-		for (int i = restOfMatches; i <= numberOfMatches; i++) {
+		//the top levels of the bracket
+		for (int i = 0; i < positonToInsertPlayers; i++) {
 			Match match = new Match();
 			bracket.put(i, match);
 		}
@@ -63,3 +67,4 @@ public class BracketTournament {
 		return playersInLevel;
 	}
 }
+

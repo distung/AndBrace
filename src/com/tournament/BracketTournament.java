@@ -19,7 +19,7 @@ public class BracketTournament {
 	protected void InitializeBrackets(LinkedList<Player> players) {		
 		numberOfLevels = (int) (Math.log(players.size()) / Math.log(2));
 		int numberOfMatches = 2 ^ numberOfLevels;
-		int positonToInsertPlayers = (2 ^ numberOfLevels - 1);
+		int positonToInsertPlayers = 2 ^ (numberOfLevels - 1);
 		int positionToStop = positonToInsertPlayers + players.size();
 		
 		//insert players at the bottom of the bracket

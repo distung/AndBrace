@@ -4,19 +4,19 @@ import java.util.*;
 public class BracketTournament {
 	
 	private HashMap<Integer, Match> bracket = new HashMap<Integer, Match>();
-	private LinkedList<Player> players;
+	private ArrayList<Player> players;
 	private ISeedingStrategy strategy;
 	private int numberOfMatches;
 	private int numberOfLevels;
 	
-	public BracketTournament(LinkedList<Player> players, ISeedingStrategy strategy)
+	public BracketTournament(ArrayList<Player> players, ISeedingStrategy strategy)
 	{
 		this.bracket = new HashMap<Integer, Match>();
 		this.strategy = strategy;	
 		this.players = this.strategy.Seed(players);
 	}
 	
-	protected void InitializeBrackets(LinkedList<Player> players) {		
+	protected void InitializeBrackets(ArrayList<Player> players) {		
 		numberOfLevels = (int) (Math.log(players.size()) / Math.log(2));
 		int numberOfMatches = 2 ^ numberOfLevels;
 		int positonToInsertPlayers = 2 ^ (numberOfLevels - 1);
@@ -37,9 +37,9 @@ public class BracketTournament {
 		}
 	}
 	
-	public LinkedList<Match> GetAllMatchesOfLevel(int level) {
+	public ArrayList<Match> GetAllMatchesOfLevel(int level) {
 		assert level <= this.numberOfLevels;
-		LinkedList<Match> matchesInLevel = new LinkedList<Match>();
+		ArrayList<Match> matchesInLevel = new ArrayList<Match>();
 		int startingNumber = 2 ^ level ;
 		int endingNumber = 2 ^ level + 1;
 		
@@ -50,11 +50,11 @@ public class BracketTournament {
 		return matchesInLevel;
 	}
 	
-	public LinkedList<Player> GetAllPlayersOfLevel(int level) {
+	public ArrayList<Player> GetAllPlayersOfLevel(int level) {
 		assert level <= this.numberOfLevels;
 		
-		LinkedList<Player> playersInLevel = new LinkedList<Player>();
-		LinkedList<Match> matchesInLevel = GetAllMatchesOfLevel(level);
+		ArrayList<Player> playersInLevel = new ArrayList<Player>();
+		ArrayList<Match> matchesInLevel = GetAllMatchesOfLevel(level);
 		for (Match match: matchesInLevel) {
 			if (match.Player1 != null) {
 				playersInLevel.add(match.Player1);

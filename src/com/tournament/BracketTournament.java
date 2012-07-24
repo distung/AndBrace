@@ -41,7 +41,7 @@ public class BracketTournament {
 		assert level <= this.numberOfLevels;
 		ArrayList<Match> matchesInLevel = new ArrayList<Match>();
 		int startingNumber = 2 ^ level ;
-		int endingNumber = 2 ^ level + 1;
+		int endingNumber = 2 ^ (level + 1);
 		
 		for (int i = startingNumber; i < endingNumber; i++)
 		{

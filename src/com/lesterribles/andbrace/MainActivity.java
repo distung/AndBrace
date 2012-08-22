@@ -2,13 +2,18 @@ package com.lesterribles.andbrace;
 
 import com.tournament.BracketView;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
+import android.widget.PopupMenu;
 
 public class MainActivity extends Activity implements OnClickListener {
 
@@ -16,7 +21,6 @@ public class MainActivity extends Activity implements OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
     }
     
     public MainActivity() {
@@ -25,9 +29,27 @@ public class MainActivity extends Activity implements OnClickListener {
     
 	@Override
    public void onClick(View v) {
+		
 	   BracketView bracket = (BracketView) this.findViewById(R.id.bview);
+      // Popup Menu
+   	int version = Integer.parseInt(Build.VERSION.SDK);
+   				
+   	//if (version >= Build.VERSION_CODES.HONEYCOMB) {
+   		//com.lesterribles.andbrace.Menu menu = new com.lesterribles.andbrace.Menu(this, this.findViewById(R.id.bview));
+   	//}
    }
 	
+	
+	@TargetApi(11)
+	public void showPopup(View v) {
+	    PopupMenu popup = new PopupMenu(this, v);
+	    MenuInflater inflater = popup.getMenuInflater();
+	    inflater.inflate(R.menu.actions, popup.getMenu());
+	    popup.show();
+	}
+	
+	
+	// hardware button
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, 1, 0, "View");
 		menu.add(0, 2, 0, "Upload");

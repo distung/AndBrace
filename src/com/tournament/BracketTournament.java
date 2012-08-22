@@ -14,11 +14,12 @@ public class BracketTournament {
 		this.bracket = new HashMap<Integer, Match>();
 		this.strategy = strategy;	
 		this.players = this.strategy.Seed(players);
+		this.InitializeBrackets(players);
 	}
 	
 	protected void InitializeBrackets(ArrayList<Player> players) {		
 		numberOfLevels = (int) (Math.log(players.size()) / Math.log(2));
-		int numberOfMatches = 2 ^ numberOfLevels;
+		numberOfMatches = 2 ^ numberOfLevels;
 		int positonToInsertPlayers = 2 ^ (numberOfLevels - 1);
 		int positionToStop = positonToInsertPlayers + players.size();
 		

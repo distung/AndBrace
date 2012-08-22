@@ -1,6 +1,5 @@
 package com.lesterribles.andbrace;
 
-
 import android.os.Build;
 import android.os.Bundle;
 import android.annotation.TargetApi;
@@ -8,15 +7,11 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MenuItem;
+import android.widget.PopupMenu;
 import android.widget.TableLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.NavUtils;
-
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
-import android.widget.PopupMenu;
 
 
 public class MainActivity extends Activity implements OnClickListener {
@@ -39,25 +34,21 @@ public class MainActivity extends Activity implements OnClickListener {
     
 	@Override
    public void onClick(View v) {
-<<<<<<< HEAD
-=======
-		
-	   BracketView bracket = (BracketView) this.findViewById(R.id.bview);
       // Popup Menu
    	int version = Integer.parseInt(Build.VERSION.SDK);
    				
    	//if (version >= Build.VERSION_CODES.HONEYCOMB) {
    		//com.lesterribles.andbrace.Menu menu = new com.lesterribles.andbrace.Menu(this, this.findViewById(R.id.bview));
    	//}
->>>>>>> 7d2a7a4884ca43136211f6375928d55c5ca321ce
-   }
+
+	}
 	
 	
 	@TargetApi(11)
 	public void showPopup(View v) {
 	    PopupMenu popup = new PopupMenu(this, v);
 	    MenuInflater inflater = popup.getMenuInflater();
-	    inflater.inflate(R.menu.actions, popup.getMenu());
+	    inflater.inflate(R.menu.activity_main, popup.getMenu());
 	    popup.show();
 	}
 	

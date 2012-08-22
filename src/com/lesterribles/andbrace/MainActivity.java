@@ -48,7 +48,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 	
 	
-	// hardware button
+	// menu button
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, 1, 0, "View");
 		menu.add(0, 2, 0, "Upload");

@@ -1,20 +1,18 @@
 package com.lesterribles.andbrace;
 
-import com.tournament.BracketView;
+import com.tournament.BracketActivity;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.PopupMenu;
-import android.widget.TableLayout;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
-import android.widget.PopupMenu;
 
 public class MainActivity extends Activity implements OnClickListener {
 
@@ -31,9 +29,9 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
    public void onClick(View v) {
 		
-	   BracketView bracket = (BracketView) this.findViewById(R.id.bview);
+	   //BracketView bracket = (BracketView) this.findViewById(R.id.bview);
       // Popup Menu
-   	int version = Integer.parseInt(Build.VERSION.SDK);
+   	//int version = Integer.parseInt(Build.VERSION.SDK);
    				
    	//if (version >= Build.VERSION_CODES.HONEYCOMB) {
    		//com.lesterribles.andbrace.Menu menu = new com.lesterribles.andbrace.Menu(this, this.findViewById(R.id.bview));
@@ -64,7 +62,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()){
 		case 1:
-			Toast.makeText(this, String.valueOf((item.getItemId())), Toast.LENGTH_LONG).show();
+			Intent startNewActivityOpen = new Intent(this, BracketActivity.class);
+			startActivityForResult(startNewActivityOpen, 0);
 			return true;
 		case 2:
 			Toast.makeText(this, String.valueOf((item.getItemId())), Toast.LENGTH_LONG).show();
@@ -84,7 +83,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		default:
 			return false;
 		}
-
 	}
 
 }

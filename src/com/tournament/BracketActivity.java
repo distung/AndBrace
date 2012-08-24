@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class BracketActivity extends BaseActivity {
@@ -36,13 +37,6 @@ public class BracketActivity extends BaseActivity {
 //       TextView text5 = new TextView(this);
 //       TextView text6 = new TextView(this);
 //       TextView text7 = new TextView(this);
-       
-       View view = new View(this);
-       view.setBackgroundColor(Color.DKGRAY);
-       RelativeLayout.LayoutParams viewParams1 = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-       viewParams1.height = 1;
-       viewParams1.width = 100;
-       viewParams1.addRule(RelativeLayout.RIGHT_OF, 7);
        
        Button button1 = new Button(this);
        Button button2 = new Button(this);
@@ -76,13 +70,13 @@ public class BracketActivity extends BaseActivity {
        button6.setHeight(120);
        button7.setHeight(120);
        
-       button1.setWidth(250);
-       button2.setWidth(250);
-       button3.setWidth(250);
-       button4.setWidth(250);
-       button5.setWidth(250);
-       button6.setWidth(250);
-       button7.setWidth(250);
+       button1.setWidth(450);
+       button2.setWidth(450);
+       button3.setWidth(450);
+       button4.setWidth(450);
+       button5.setWidth(450);
+       button6.setWidth(450);
+       button7.setWidth(450);
        
 
        
@@ -145,9 +139,10 @@ public class BracketActivity extends BaseActivity {
        button5.setLayoutParams(params5);
        button6.setLayoutParams(params6);
        button7.setLayoutParams(params7);
-
-       view.setLayoutParams(viewParams1);
-
+       
+       View view = new View(this);
+       view.setBackgroundColor(Color.DKGRAY);
+       
        layout.addView(button1);
        layout.addView(button2);
        layout.addView(button3);
@@ -155,9 +150,14 @@ public class BracketActivity extends BaseActivity {
        layout.addView(button5);
        layout.addView(button6);
        layout.addView(button7);
-       layout.addView(view, viewParams1);
+       layout.addView(view);
        
-       setContentView(layout);
+       ScrollView scrollView = new ScrollView(this);
+       scrollView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
+             LayoutParams.FILL_PARENT));
+       scrollView.addView(layout);
+       
+       setContentView(scrollView);
        
    }
 }

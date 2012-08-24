@@ -31,7 +31,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
    	//}
    }
 	
-	
 	@TargetApi(11)
 	public void showPopup(View v) {
 	    PopupMenu popup = new PopupMenu(this, v);

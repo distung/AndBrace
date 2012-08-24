@@ -1,20 +1,13 @@
 package com.lesterribles.andbrace;
 
-import com.tournament.BracketActivity;
-
 import android.os.Bundle;
 import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Intent;
-import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.widget.PopupMenu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
 
-public class MainActivity extends Activity implements OnClickListener {
+public class MainActivity extends BaseActivity implements OnClickListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,44 +38,6 @@ public class MainActivity extends Activity implements OnClickListener {
 	    MenuInflater inflater = popup.getMenuInflater();
 	    inflater.inflate(R.menu.actions, popup.getMenu());
 	    popup.show();
-	}
-	
-	
-	// menu button
-	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, 1, 0, "View");
-		menu.add(0, 2, 0, "Upload");
-		menu.add(0, 3, 0, "Send");
-		menu.add(0, 4, 0, "Search");
-		menu.add(0, 5, 0, "Settings");
-		menu.add(0, 6, 0, "Info");
-		return true;
-	}
-	
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch(item.getItemId()){
-		case 1:
-			Intent startNewActivityOpen = new Intent(this, BracketActivity.class);
-			startActivityForResult(startNewActivityOpen, 0);
-			return true;
-		case 2:
-			Toast.makeText(this, String.valueOf((item.getItemId())), Toast.LENGTH_LONG).show();
-			return true;
-		case 3:
-			Toast.makeText(this, String.valueOf((item.getItemId())), Toast.LENGTH_LONG).show();
-			return true;
-		case 4:
-			Toast.makeText(this, String.valueOf((item.getItemId())), Toast.LENGTH_LONG).show();
-			return true;
-		case 5:
-			Toast.makeText(this, String.valueOf((item.getItemId())), Toast.LENGTH_LONG).show();
-			return true;
-		case 6:
-			Toast.makeText(this, String.valueOf((item.getItemId())), Toast.LENGTH_LONG).show();
-			return true;
-		default:
-			return false;
-		}
 	}
 
 }

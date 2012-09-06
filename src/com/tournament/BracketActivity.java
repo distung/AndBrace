@@ -3,6 +3,7 @@ package com.tournament;
 import com.lesterribles.andbrace.BaseActivity;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.ViewGroup.LayoutParams;
@@ -36,15 +37,6 @@ public class BracketActivity extends BaseActivity {
        RelativeLayout.LayoutParams params5 = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
        RelativeLayout.LayoutParams params6 = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
        
-
-//       TextView text1 = new TextView(this);
-//       TextView text2 = new TextView(this);
-//       TextView text3 = new TextView(this);
-//       TextView text4 = new TextView(this);
-//       TextView text5 = new TextView(this);
-//       TextView text6 = new TextView(this);
-//       TextView text7 = new TextView(this);
-       
        Button button1 = new Button(this);
        Button button2 = new Button(this);
        Button button3 = new Button(this);
@@ -76,39 +68,14 @@ public class BracketActivity extends BaseActivity {
        button6.setHeight(120);
        button7.setHeight(120);
        
-       button1.setWidth(450);
-       button2.setWidth(450);
-       button3.setWidth(450);
-       button4.setWidth(450);
-       button5.setWidth(450);
-       button6.setWidth(450);
-       button7.setWidth(450);
+       button1.setWidth(400);
+       button2.setWidth(400);
+       button3.setWidth(400);
+       button4.setWidth(400);
+       button5.setWidth(400);
+       button6.setWidth(400);
+       button7.setWidth(400);
        
-
-       
-//       text1.setId(1);
-//       text2.setId(2);
-//       text3.setId(3);
-//       text4.setId(4);
-//       text5.setId(5);
-//       text6.setId(6);
-//       text7.setId(7);
-//       
-//       text1.setBackgroundColor(Color.WHITE);
-//       text2.setBackgroundColor(Color.RED);
-//       text3.setBackgroundColor(Color.YELLOW);
-//       text4.setBackgroundColor(Color.CYAN);
-//       text5.setBackgroundColor(Color.MAGENTA);
-//       text6.setBackgroundColor(Color.BLUE);
-//       text7.setBackgroundColor(Color.GREEN); 
-//       
-//       text1.setText("FUCK GUIS");
-//       text2.setText("FUCK GUIS");
-//       text3.setText("FUCK GUIS");
-//       text4.setText("FUCK GUIS");
-//       text5.setText("FUCK GUIS");
-//       text6.setText("FUCK GUIS");
-//       text7.setText("FUCK GUIS");
        
        params1.addRule(RelativeLayout.ALIGN_PARENT_LEFT);      
        
@@ -126,14 +93,7 @@ public class BracketActivity extends BaseActivity {
        
        params2.addRule(RelativeLayout.RIGHT_OF, 5);
        params2.addRule(RelativeLayout.BELOW, 5);
-              
-//       text1.setLayoutParams(params1);
-//       text2.setLayoutParams(params2);
-//       text3.setLayoutParams(params3);
-//       text4.setLayoutParams(params4);
-//       text5.setLayoutParams(params5);
-//       text6.setLayoutParams(params6);
-//       text7.setLayoutParams(params7);
+       
        
        button1.setLayoutParams(params1);
        button2.setLayoutParams(params2);
@@ -142,32 +102,16 @@ public class BracketActivity extends BaseActivity {
        button5.setLayoutParams(params5);
        button6.setLayoutParams(params6);
        
-//       View view = new View(this);
-//       view.setBackgroundColor(Color.DKGRAY);
-       
        layout.addView(button1);
        layout.addView(button2);
        layout.addView(button3);
        layout.addView(button4);
        layout.addView(button5);
        layout.addView(button6);
-       //layout.addView(view);
+       layout.setBackgroundColor(Color.DKGRAY);
        
-       
-//       HorizontalScrollView horizontalScrollView = new HorizontalScrollView(this);
-//       horizontalScrollView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-//      		 LayoutParams.FILL_PARENT));
-//       horizontalScrollView.addView(layout);
-//       
-//       ScrollView scrollView = new ScrollView(this);
-//       scrollView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-//             LayoutParams.FILL_PARENT));
-//       scrollView.addView(horizontalScrollView);
-       
-       
+       // To draw things off the screen.
        FrameLayout frameLayout = new FrameLayout(this);
-       FrameLayout.LayoutParams frameLayoutParams = new FrameLayout.LayoutParams(2000, 2000);
-       frameLayout.setLayoutParams(frameLayoutParams);
        frameLayout.addView(layout);
        
        setContentView(frameLayout);

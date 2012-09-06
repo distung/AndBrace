@@ -4,21 +4,33 @@ import com.lesterribles.andbrace.BaseActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.HorizontalScrollView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class BracketActivity extends BaseActivity {
 	
+	private RelativeLayout layout;
+	private int currentX;
+	private int currentY;
+	private int scrollX;
+	private int scrollY;
+	int boundX = 0;
+	int boundY = 0;
+	
    @Override
    public void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        
-       RelativeLayout layout = new RelativeLayout(this);
-       RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+       layout = new RelativeLayout(this);
+       RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(2000, 2000);
+       //RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
        layout.setLayoutParams(layoutParams);
 
        RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
@@ -54,13 +66,12 @@ public class BracketActivity extends BaseActivity {
        button6.setId(6);
        button7.setId(7);
        
-       button1.setText("Tung\n McKendon");
+       button1.setText("Superman\n Doomsday");
        button2.setText("Godzilla\n MechaGodzilla");
        button3.setText("Batman\n Bane");
        button4.setText("Wolverine\n Cyclops");
        button5.setText("Spiderman\n Venom");
        button6.setText("Ironman\n War Machine");
-       button7.setText("Superman\n Doomsday");
        
        button1.setHeight(120);
        button2.setHeight(120);
@@ -109,9 +120,6 @@ public class BracketActivity extends BaseActivity {
        params5.addRule(RelativeLayout.RIGHT_OF, 1);
        params5.addRule(RelativeLayout.BELOW, 1);
        
-       params2.addRule(RelativeLayout.LEFT_OF, 5);
-       params2.addRule(RelativeLayout.BELOW, 5);
-       
        params3.addRule(RelativeLayout.ALIGN_PARENT_LEFT); 
        params3.addRule(RelativeLayout.BELOW, 5);
        
@@ -121,8 +129,8 @@ public class BracketActivity extends BaseActivity {
        params4.addRule(RelativeLayout.LEFT_OF, 6);
        params4.addRule(RelativeLayout.BELOW, 6);
        
-       params7.addRule(RelativeLayout.RIGHT_OF, 5);
-       params7.addRule(RelativeLayout.BELOW, 5);
+       params2.addRule(RelativeLayout.RIGHT_OF, 5);
+       params2.addRule(RelativeLayout.BELOW, 5);
               
 //       text1.setLayoutParams(params1);
 //       text2.setLayoutParams(params2);
@@ -138,10 +146,9 @@ public class BracketActivity extends BaseActivity {
        button4.setLayoutParams(params4);
        button5.setLayoutParams(params5);
        button6.setLayoutParams(params6);
-       button7.setLayoutParams(params7);
        
-       View view = new View(this);
-       view.setBackgroundColor(Color.DKGRAY);
+//       View view = new View(this);
+//       view.setBackgroundColor(Color.DKGRAY);
        
        layout.addView(button1);
        layout.addView(button2);
@@ -149,15 +156,70 @@ public class BracketActivity extends BaseActivity {
        layout.addView(button4);
        layout.addView(button5);
        layout.addView(button6);
-       layout.addView(button7);
-       layout.addView(view);
+       //layout.addView(view);
        
-       ScrollView scrollView = new ScrollView(this);
-       scrollView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-             LayoutParams.FILL_PARENT));
-       scrollView.addView(layout);
        
-       setContentView(scrollView);
+//       HorizontalScrollView horizontalScrollView = new HorizontalScrollView(this);
+//       horizontalScrollView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
+//      		 LayoutParams.FILL_PARENT));
+//       horizontalScrollView.addView(layout);
+//       
+//       ScrollView scrollView = new ScrollView(this);
+//       scrollView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
+//             LayoutParams.FILL_PARENT));
+//       scrollView.addView(horizontalScrollView);
+       
+       
+       FrameLayout frameLayout = new FrameLayout(this);
+       FrameLayout.LayoutParams frameLayoutParams = new FrameLayout.LayoutParams(2000, 2000);
+       frameLayout.setLayoutParams(frameLayoutParams);
+       frameLayout.addView(layout);
+       
+       setContentView(frameLayout);
        
    }
+   
+   @Override 
+   public boolean onTouchEvent(MotionEvent event) {
+     switch (event.getAction()) {
+         case MotionEvent.ACTION_DOWN: {
+             currentX = (int) event.getRawX();
+             currentY = (int) event.getRawY();
+             break;
+         }
+
+         case MotionEvent.ACTION_MOVE: {
+             int x2 = (int) event.getRawX();
+             int y2 = (int) event.getRawY();
+             scrollX = currentX - x2;
+             scrollY = currentY - y2;
+             
+             if (boundX - scrollX < 0 && boundY - scrollY < 0)
+             {
+                layout.scrollBy(scrollX , scrollY);
+                boundX -= scrollX;
+                boundY -= scrollY;
+             }
+             else if (boundX - scrollX < 0)
+             {
+            	 layout.scrollBy(scrollX, 0);
+            	 boundX -= scrollX;
+             }
+             else if (boundY - scrollY < 0)
+             {
+            	 layout.scrollBy(0, scrollY);
+            	 boundY -= scrollY;
+             }
+             
+             currentX = x2;
+             currentY = y2;
+             break;
+         }   
+         case MotionEvent.ACTION_UP: {
+             break;
+         }
+     }
+       return true; 
+   }
+
 }

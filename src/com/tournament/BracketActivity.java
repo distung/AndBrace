@@ -18,7 +18,8 @@ public class BracketActivity extends BaseActivity {
        super.onCreate(savedInstanceState);
        
        RelativeLayout layout = new RelativeLayout(this);
-       RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+
+       RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(10000, 10000);
        layout.setLayoutParams(layoutParams);
 
        RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
@@ -152,12 +153,12 @@ public class BracketActivity extends BaseActivity {
        layout.addView(button7);
        layout.addView(view);
        
-       ScrollView scrollView = new ScrollView(this);
-       scrollView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-             LayoutParams.FILL_PARENT));
-       scrollView.addView(layout);
+     //  ScrollView scrollView = new ScrollView(this);
+     //  scrollView.setLayoutParams(new LayoutParams(100000,
+      //       100000));
+      // scrollView.addView(layout);
        
-       setContentView(scrollView);
+       setContentView(layout);
        
    }
 }

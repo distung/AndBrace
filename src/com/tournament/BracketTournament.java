@@ -67,5 +67,17 @@ public class BracketTournament {
 		}
 		return playersInLevel;
 	}
+	
+	public int getNumberMatches() {
+		return numberOfMatches;
+	}
+	
+	public int getNumberOfLevels() {
+		return numberOfLevels;
+	}
+	
+	public int getNumberOfPlayers() {
+		return players.size();
+	}
 }
 

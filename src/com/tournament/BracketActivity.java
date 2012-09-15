@@ -39,22 +39,22 @@ public class BracketActivity extends BaseActivity {
 
        ArrayList<Player> players = new ArrayList<Player>()
       		 {{ 
-      			 add(new Player("a"));
-      			 add(new Player("b"));
-      			 add(new Player("c"));
-      			 add(new Player("d"));
-      			 add(new Player("e"));
-      			 add(new Player("f"));
-      			 add(new Player("g"));
-      			 add(new Player("h"));
-      			 add(new Player("j"));
-      			 add(new Player("k"));
-      			 add(new Player("l"));
-      			 add(new Player("m"));
-      			 add(new Player("n"));
-      			 add(new Player("o"));
-      			 add(new Player("p"));
-      			 add(new Player("q"));
+      			 add(new Player("a", "a"));
+      			 add(new Player("b", "b"));
+      			 add(new Player("c", "c"));
+      			 add(new Player("d","d"));
+      			 add(new Player("e","e"));
+      			 add(new Player("f","f"));
+      			 add(new Player("g","g"));
+      			 add(new Player("h","h"));
+      			 add(new Player("j","i"));
+      			 add(new Player("k","j"));
+      			 add(new Player("l","h"));
+      			 add(new Player("m","j"));
+      			 add(new Player("n","k"));
+      			 add(new Player("o","l"));
+      			 add(new Player("p","m"));
+      			 add(new Player("q","n"));
       		 }};
        
        

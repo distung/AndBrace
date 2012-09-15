@@ -13,4 +13,19 @@ public class Match {
 		Player1Score = player1Score;
 		Player2Score = player2Score;
 	}
+	
+	public void PlayerOneTwo(Player player, int player1Score, int player2Score) {
+		this.Winner = player;
+		Player1Score = player1Score;
+		Player2Score = player2Score;
+	}
+	
+	public Match(Player player1,Player player2) {
+		Player1 = player1;
+		Player2 = player2;	
+	}
+	
+	public Match() {
+		
+	}
 }

@@ -6,6 +6,10 @@ public class ByePlayer extends Player {
 		// TODO Auto-generated constructor stub
 	}
 
+	public ByePlayer() {
+		Handle = "Player";
+	}
+
 	public boolean isByePlayer() {
 		return true;
 	}

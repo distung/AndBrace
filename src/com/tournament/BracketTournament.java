@@ -64,11 +64,10 @@ public class BracketTournament {
 		for (Match match: matchesInLevel) {
 			if (match.Player1 != null) {
 				playersInLevel.add(match.Player1);
-				
 			}
 		
 			if (match.Player2 != null) {
-				playersInLevel.add(match.Player1);
+				playersInLevel.add(match.Player2);
 			}
 		}
 		return playersInLevel;

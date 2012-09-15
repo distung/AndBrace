@@ -60,6 +60,7 @@ public class BracketActivity extends BaseActivity {
        
        
        BracketTournament bracketTournament = new BracketTournament(players, new DefaultSeedingStrategy());
+//       ArrayList<Match> matchesInLevel = bracketTournament.GetAllMatchesOfLevel(4);
        ArrayList<Player> pl = bracketTournament.GetAllPlayersOfLevel(4);
 //       
 //

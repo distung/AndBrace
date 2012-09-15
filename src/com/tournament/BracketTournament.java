@@ -25,12 +25,14 @@ public class BracketTournament {
 		int positonToInsertPlayers = (int) Math.pow(2, (numberOfLevels - 1));
 		int positionToStop = positonToInsertPlayers + players.size() / 2;
 		
+		int playerCount = 0;
 		//insert players at the bottom of the bracket
-		for (int i = positonToInsertPlayers; i < positionToStop; i = i+2) {
+		for (int i = positonToInsertPlayers; i < positionToStop; i++) {
 			Match match = new Match();
-			match.Player1 = players.get(i);
-			match.Player2 = players.get(i + 1);
+			match.Player1 = players.get(playerCount);
+			match.Player2 = players.get(playerCount + 1);
 			bracket.put(i, match);		
+			playerCount += 2;
 		}
 		
 		//the top levels of the bracket

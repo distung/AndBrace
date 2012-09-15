@@ -1,6 +1,8 @@
 package com.tournament;
 import java.util.*;
 
+import android.util.Log;
+
 public class BracketTournament {
 	
 	private HashMap<Integer, Match> bracket = new HashMap<Integer, Match>();
@@ -20,8 +22,8 @@ public class BracketTournament {
 	protected void InitializeBrackets(ArrayList<Player> players) {		
 		numberOfLevels = (int) (Math.log(players.size()) / Math.log(2));
 		numberOfMatches = 2 ^ numberOfLevels;
-		int positonToInsertPlayers = 2 ^ (numberOfLevels - 1);
-		int positionToStop = positonToInsertPlayers + players.size();
+		int positonToInsertPlayers = (int) Math.pow(2, (numberOfLevels - 1));
+		int positionToStop = positonToInsertPlayers + players.size() / 2;
 		
 		//insert players at the bottom of the bracket
 		for (int i = positonToInsertPlayers; i < positionToStop; i = i+2) {
@@ -41,12 +43,15 @@ public class BracketTournament {
 	public ArrayList<Match> GetAllMatchesOfLevel(int level) {
 		assert level <= this.numberOfLevels;
 		ArrayList<Match> matchesInLevel = new ArrayList<Match>();
-		int startingNumber = 2 ^ level ;
-		int endingNumber = 2 ^ (level + 1);
+		int startingNumber = (int) Math.pow(2, level - 1) ;
+		int endingNumber = (int) Math.pow(2, level);
 		
+//		Log.d("startingNumber", startingNumber + "");
+//		Log.d("endingNumber", endingNumber + "");
 		for (int i = startingNumber; i < endingNumber; i++)
 		{
 			matchesInLevel.add(bracket.get(i));
+//			Log.d("Loop", i + "");
 		}
 		return matchesInLevel;
 	}
@@ -59,6 +64,7 @@ public class BracketTournament {
 		for (Match match: matchesInLevel) {
 			if (match.Player1 != null) {
 				playersInLevel.add(match.Player1);
+				
 			}
 		
 			if (match.Player2 != null) {

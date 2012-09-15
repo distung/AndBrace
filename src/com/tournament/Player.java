@@ -1,19 +1,17 @@
 package com.tournament;
 
 public class Player {
-	String FirstName;
-	String LastName;
+	String Name;
 	String Handle;
 	public Player() {
 		
 	}
 	
-	public  Player(String firstName, String lastName, String handle) {
-		FirstName = firstName;
-		LastName = lastName;
+	public  Player(String name,String handle) {
+		Name = name;
 		Handle = handle;
 	}
-	
+
 	public boolean isByePlayer() {
 		return false;
 	}

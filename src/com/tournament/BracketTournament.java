@@ -4,7 +4,7 @@ import java.util.*;
 import android.util.Log;
 
 public class BracketTournament {
-	
+	public String Name;
 	private HashMap<Integer, Match> bracket = new HashMap<Integer, Match>();
 	private ArrayList<Player> players;
 	private ISeedingStrategy strategy;
@@ -18,6 +18,8 @@ public class BracketTournament {
 		this.players = this.strategy.Seed(players);
 		this.InitializeBrackets(players);
 	}
+	
+	public BracketTournament() {};
 	
 	protected void InitializeBrackets(ArrayList<Player> players) {		
 		numberOfLevels = (int) (Math.log(players.size()) / Math.log(2));

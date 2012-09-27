@@ -31,9 +31,9 @@ public class BracketActivity extends BaseActivity {
        super.onCreate(savedInstanceState);
        
        layout = new RelativeLayout(this);
-       RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(2000, 2000);
+       
        //RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-       layout.setLayoutParams(layoutParams);
+       
 
        // button height: 110, weight: 275
 
@@ -56,18 +56,89 @@ public class BracketActivity extends BaseActivity {
       			 add(new Player("p","m"));
       			 add(new Player("q","n"));
       		 }};
-       
-       
-       
-       BracketTournament bracketTournament = new BracketTournament(players, new DefaultSeedingStrategy());
-//       ArrayList<Match> matchesInLevel = bracketTournament.GetAllMatchesOfLevel(4);
-       ArrayList<Player> pl = bracketTournament.GetAllPlayersOfLevel(4);
-//       
-//
-//       Log.d("Something", Arrays.toString(pl.toArray()));
-       Log.d("Count", pl.size() + " ");
-       
-       
+      		 
+		 BracketTournament bt = new BracketTournament(players, new DefaultSeedingStrategy());
+
+
+//		 for (int i = 0; i < bt.getNumberOfLevels(); i++)
+//		 {
+//			 ArrayList<Match> matchesInLevel = bt.GetAllMatchesOfLevel(i);
+//		 }
+		 
+//       ArrayList<Player> pl = bt.GetAllPlayersOfLevel(4);
+
+		 String h1;
+		 String h2;
+		 int numLevels = bt.getNumberOfLevels();
+		 int i = 1;
+    	 int j = 0;
+    	 int maxWidth = 0;
+    	 int width = 0;
+       for (int k = numLevels; k > 0; k--)
+       {
+       	 ArrayList<Match> matchesInLevel = bt.GetAllMatchesOfLevel(k);
+//      	 Log.d("Matches for this Level", k + " matches: " + matchesInLevel.size());
+      	 j = 0;
+      	 if (k == numLevels)
+      		 maxWidth = (matchesInLevel.size() * 110) + ((matchesInLevel.size() - 1) * 16);
+      	 width = maxWidth / matchesInLevel.size();
+	       for (Match match : matchesInLevel)
+	       { 
+	      	 if (match.Player1 == null)
+	      		 h1 = "";
+	      	 else
+	      		 h1 = match.Player1.Handle;
+	      	 
+	      	 if (match.Player2 == null)
+	      		 h2 = "";
+	      	 else
+	      		 h2 = match.Player2.Handle;
+	      	 
+	      	 Button button = new Button(this);
+	      	 button.setId(j);
+	      	 button.setText(h1 + "\n" + h2);
+	      	 button.setHeight(110);
+	      	 button.setWidth(275);
+	      	 
+	      	 
+	       	 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+//	      	 if (i == 1 && j == 1)
+//	      	 {
+////	      		 params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+//	      	 }
+//	      	 else if (firstInLevel == j && j != 1)
+//	      	 {
+//	      		 params.addRule(RelativeLayout.RIGHT_OF, j-1);
+//	      		 params.addRule(RelativeLayout.BELOW, j-1);
+//	      	 }
+//	      	 else
+//	      	 {
+//	      		 params.addRule(RelativeLayout.BELOW, j-1);
+//	      		 params.addRule(RelativeLayout.ALIGN_LEFT, j-1);
+//	      	 }
+	      	 
+	      	 params.leftMargin = ((i-1) * 300);
+	      	 if (i == 1)
+	      		 params.topMargin = (j * 110) + (j * 16) ;
+	      	 else																										// JUST FIX THIS
+	      		 params.topMargin =  ((width * j)         +      (width / 2)          +      (i - 1) * j * 16  + 8)      -           55;	      	 
+//	       	 if (i == 1 && j == 0)
+//	       		 params.topMargin = 0;
+//	      	 else if (i > 0 && j == 0)
+//	      		 params.topMargin = ((i-1) * 16) + ((i-1) * 110) + 55 + 8;
+//	      	 else
+//	      		 params.topMargin = ((i * j * 16) + (j * 110)) * i;
+	      	 
+	      	 button.setLayoutParams(params);
+	      	 layout.addView(button);
+	      	 Log.d("Something", h1+ "" + h2 + "    LEVEL: " + k + "   I: " + i + "  J: " + j);
+	      	 j++;
+	       }
+	       i++;
+       }
+	       
+	       
+	       
 //       RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 //       RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 //       RelativeLayout.LayoutParams params3 = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
@@ -147,7 +218,9 @@ public class BracketActivity extends BaseActivity {
 //       layout.addView(button5);
 //       layout.addView(button6);
        
-       
+   	 
+   	 RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(bt.getNumberOfLevels() * 300, bt.GetAllPlayersOfLevel(numLevels).size() * 126);
+   	 layout.setLayoutParams(layoutParams);
        layout.setBackgroundColor(Color.DKGRAY);
        
        // To draw things off the screen.
